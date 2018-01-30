@@ -10,6 +10,7 @@
   <project_license>MIT</project_license>
   <url type="homepage">https://godotengine.org/</url>
   <releases>
+    <release version="3.0" date="2018-01-29" />
     <release version="2.1.4" timestamp="1503906214"/>
   </releases>
 </component>
