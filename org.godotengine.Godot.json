@@ -37,8 +37,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/godotengine/godot/archive/3.0.3-stable.tar.gz",
-                    "sha256": "db6bf2a2cee8e058254fc0b43c38c68a5226b18315b852e266cb3b95e23618c1"
+                    "url": "https://github.com/godotengine/godot/archive/3.0.4-stable.tar.gz",
+                    "sha256": "ebd2164ecde94c5276fe0420b8b232b13f255c420a1dca6b34e511e17292164e"
                 }
             ],
             "build-commands": [
@@ -76,8 +76,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/godotengine/godot/archive/3.0.3-stable.tar.gz",
-                    "sha256": "db6bf2a2cee8e058254fc0b43c38c68a5226b18315b852e266cb3b95e23618c1"
+                    "url": "https://github.com/godotengine/godot/archive/3.0.4-stable.tar.gz",
+                    "sha256": "ebd2164ecde94c5276fe0420b8b232b13f255c420a1dca6b34e511e17292164e"
                 }
             ],
             "build-commands": [
