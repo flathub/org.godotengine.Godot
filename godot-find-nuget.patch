@@ -1,0 +1,25 @@
+From 92880f837d7ec8aa35df13439b59f363628c329b Mon Sep 17 00:00:00 2001
+From: Ricardo Silva Veloso <ricvelozo@gmail.com>
+Date: Wed, 11 Dec 2019 23:18:29 -0300
+Subject: [PATCH] Fix nuget missing error
+
+---
+ modules/mono/SCsub | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/modules/mono/SCsub b/modules/mono/SCsub
+index 89d56de..a1d3348 100664
+--- a/modules/mono/SCsub
++++ b/modules/mono/SCsub
+@@ -119,7 +119,7 @@ def find_nuget_unix():
+     import os.path
+     import sys
+
+-    hint_dirs = ['/opt/novell/mono/bin']
++    hint_dirs = ['/usr/lib/sdk/mono5/lib/nuget']
+     if sys.platform == 'darwin':
+         hint_dirs = ['/Library/Frameworks/Mono.framework/Versions/Current/bin', '/usr/local/var/homebrew/linked/mono/bin'] + hint_dirs
+ 
+-- 
+2.23.0
+

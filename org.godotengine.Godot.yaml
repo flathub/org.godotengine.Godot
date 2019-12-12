@@ -1,17 +1,25 @@
 app-id: org.godotengine.Godot
 runtime: org.freedesktop.Platform
-runtime-version: '20.08'
+runtime-version: '18.08'
 default-branch: stable
 sdk: org.freedesktop.Sdk
+# Use writable-sdk to install MSBuild for Mono
+writable-sdk: true
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.mono5
 command: godot
 
 build-options:
   arch:
+    x86:
+      env:
+        MONO32_PREFIX: /usr/lib/sdk/mono5/
     x86_64:
       env:
         # Only enable link-time optimization when targeting x86_64
         # (causes issues on other architectures)
         SCONS_FLAGS_EXTRA: use_lto=yes
+        MONO64_PREFIX: /usr/lib/sdk/mono5/
 
   env:
     # Will be appended to the version string displayed in the editor and command-line help
@@ -60,6 +68,32 @@ modules:
     build-commands:
       - python3 setup.py install --prefix=/app
 
+  - name: msbuild
+    sources:
+      - type: file
+        url: http://download.mono-project.com/repo/ubuntu/pool/main/m/msbuild/msbuild_16.4+xamarinxplat.2019.09.09.15.03-0xamarin5+debian10b1_all.deb
+        sha256: 012c6daba24db2e99308ac547fee0f10cdb8813d3dd0fb49d05a320e89f6b7c7
+    buildsystem: simple
+    build-commands:
+      - ar x msbuild_*.deb
+      - tar xf data.tar.xz
+      - sed -e 's|/usr/|/usr/lib/sdk/mono5/|g' -i usr/bin/msbuild
+      - mv /usr/lib/sdk/mono5/lib/mono/msbuild/15.0 /usr/lib/sdk/mono5/lib/mono/msbuild/Current
+      - mv /usr/lib/sdk/mono5/lib/mono/xbuild/15.0 /usr/lib/sdk/mono5/lib/mono/xbuild/Current
+      - cp -a usr/. /usr/lib/sdk/mono5/
+
+  - name: nuget
+    sources:
+      - type: file
+        url: http://download.mono-project.com/repo/ubuntu/pool/main/n/nuget/nuget_5.2.0.6090.bin-0xamarin1+debian10b1_all.deb
+        sha256: 0e8eb5a4bc55feb8f8d14e526d868333df2ece161bfa346f3930df07f700a07a
+    buildsystem: simple
+    build-commands:
+      - ar x nuget_*.deb
+      - tar xf data.tar.xz
+      - sed -e 's|/usr/|/usr/lib/sdk/mono5/|g' -i usr/bin/nuget
+      - cp -a usr/. /usr/lib/sdk/mono5/
+
   - name: godot-tools
     buildsystem: simple
 
@@ -70,6 +104,12 @@ modules:
 
       - type: patch
         path: android-export-defaults.patch
+
+      - type: patch
+        path: godot-find-msbuild.patch
+
+      - type: patch
+        path: godot-find-nuget.patch
 
       - type: script
         dest-filename: godot.sh
@@ -91,7 +131,9 @@ modules:
         path: org.godotengine.Godot.appdata.xml
 
     build-commands:
-      - python3 /app/bin/scons $SCONS_FLAGS $SCONS_FLAGS_EXTRA tools=yes target=release_debug -j "$FLATPAK_BUILDER_N_JOBS"
+      - python3 /app/bin/scons $SCONS_FLAGS $SCONS_FLAGS_EXTRA tools=yes module_mono_enabled=yes mono_glue=no -j "$FLATPAK_BUILDER_N_JOBS"
+      - bin/godot.x11.opt.tools.* --generate-mono-glue modules/mono/glue
+      - python3 /app/bin/scons $SCONS_FLAGS $SCONS_FLAGS_EXTRA tools=yes module_mono_enabled=yes target=release_debug -j "$FLATPAK_BUILDER_N_JOBS"
       - install -D -m755 bin/godot.x11.opt.tools.* /app/bin/godot-bin
       - install -D -m755 godot.sh /app/bin/godot
       - install -D -m755 adb.sh /app/bin/adb
