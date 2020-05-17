@@ -10,18 +10,18 @@ sdk-extensions:
 command: godot
 
 build-options:
+  append-path: /usr/lib/sdk/mono5/bin
+  append-ld-library-path: /usr/lib/sdk/mono5/lib
   arch:
-    x86:
-      env:
-        MONO32_PREFIX: /usr/lib/sdk/mono5/
     x86_64:
       env:
         # Only enable link-time optimization when targeting x86_64
         # (causes issues on other architectures)
         SCONS_FLAGS_EXTRA: use_lto=yes
-        MONO64_PREFIX: /usr/lib/sdk/mono5/
 
   env:
+    PKG_CONFIG_PATH: /usr/lib/sdk/mono5/lib/pkgconfig
+
     # Will be appended to the version string displayed in the editor and command-line help
     BUILD_NAME: flathub
 
@@ -29,6 +29,8 @@ build-options:
     # Shouldn't be quoted when used as it's a single string, not an array
     SCONS_FLAGS: >
       platform=x11
+      tools=yes
+      module_mono_enabled=yes
       CCFLAGS=-I/app/include
       prefix=/app
       unix_global_settings_path=/app
@@ -78,8 +80,6 @@ modules:
       - ar x msbuild_*.deb
       - tar xf data.tar.xz
       - sed -e 's|/usr/|/usr/lib/sdk/mono5/|g' -i usr/bin/msbuild
-      - mv /usr/lib/sdk/mono5/lib/mono/msbuild/15.0 /usr/lib/sdk/mono5/lib/mono/msbuild/Current
-      - mv /usr/lib/sdk/mono5/lib/mono/xbuild/15.0 /usr/lib/sdk/mono5/lib/mono/xbuild/Current
       - cp -a usr/. /usr/lib/sdk/mono5/
 
   - name: nuget
@@ -105,12 +105,6 @@ modules:
       - type: patch
         path: android-export-defaults.patch
 
-      - type: patch
-        path: godot-find-msbuild.patch
-
-      - type: patch
-        path: godot-find-nuget.patch
-
       - type: script
         dest-filename: godot.sh
         commands:
@@ -131,10 +125,10 @@ modules:
         path: org.godotengine.Godot.appdata.xml
 
     build-commands:
-      - python3 /app/bin/scons $SCONS_FLAGS $SCONS_FLAGS_EXTRA tools=yes module_mono_enabled=yes mono_glue=no -j "$FLATPAK_BUILDER_N_JOBS"
-      - bin/godot.x11.opt.tools.* --generate-mono-glue modules/mono/glue
-      - python3 /app/bin/scons $SCONS_FLAGS $SCONS_FLAGS_EXTRA tools=yes module_mono_enabled=yes target=release_debug -j "$FLATPAK_BUILDER_N_JOBS"
-      - install -D -m755 bin/godot.x11.opt.tools.* /app/bin/godot-bin
+      - python3 /app/bin/scons $SCONS_FLAGS $SCONS_FLAGS_EXTRA mono_glue=no -j "$FLATPAK_BUILDER_N_JOBS"
+      - bin/godot.x11.tools.* --generate-mono-glue modules/mono/glue
+      - python3 /app/bin/scons $SCONS_FLAGS $SCONS_FLAGS_EXTRA target=release_debug -j "$FLATPAK_BUILDER_N_JOBS"
+      - install -D -m755 bin/godot.x11.tools.* /app/bin/godot-bin
       - install -D -m755 godot.sh /app/bin/godot
       - install -D -m755 adb.sh /app/bin/adb
       - install -D -m755 jarsigner.sh /app/bin/jarsigner
