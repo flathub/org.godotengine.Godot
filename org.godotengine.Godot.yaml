@@ -1,6 +1,6 @@
 app-id: org.godotengine.Godot
 runtime: org.freedesktop.Platform
-runtime-version: '18.08'
+runtime-version: '19.08'
 default-branch: stable
 sdk: org.freedesktop.Sdk
 # Use writable-sdk to install MSBuild for Mono
