@@ -71,8 +71,8 @@ modules:
   - name: msbuild
     sources:
       - type: file
-        url: http://download.mono-project.com/repo/ubuntu/pool/main/m/msbuild/msbuild_16.4+xamarinxplat.2019.09.09.15.03-0xamarin5+debian10b1_all.deb
-        sha256: 012c6daba24db2e99308ac547fee0f10cdb8813d3dd0fb49d05a320e89f6b7c7
+        url: http://download.mono-project.com/repo/ubuntu/pool/main/m/msbuild/msbuild_16.5+xamarinxplat.2020.02.20.11.54-0xamarin2+debian10b1_all.deb
+        sha256: 84bb493a82ba62f634c247b448d0159f4a6e528f063ad01f0e8a981ec392cc6c
     buildsystem: simple
     build-commands:
       - ar x msbuild_*.deb
@@ -85,8 +85,8 @@ modules:
   - name: nuget
     sources:
       - type: file
-        url: http://download.mono-project.com/repo/ubuntu/pool/main/n/nuget/nuget_5.2.0.6090.bin-0xamarin1+debian10b1_all.deb
-        sha256: 0e8eb5a4bc55feb8f8d14e526d868333df2ece161bfa346f3930df07f700a07a
+        url: http://download.mono-project.com/repo/ubuntu/pool/main/n/nuget/nuget_5.5.0.6382.bin-0xamarin1+debian10b1_all.deb
+        sha256: c8bcf7c504168472f34e5ac98f38ad757cf4db9bb540e6da658aa693f9bc9403
     buildsystem: simple
     build-commands:
       - ar x nuget_*.deb
