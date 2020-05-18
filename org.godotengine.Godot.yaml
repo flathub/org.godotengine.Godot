@@ -12,6 +12,10 @@ command: godot
 build-options:
   append-path: /usr/lib/sdk/mono5/bin
   append-ld-library-path: /usr/lib/sdk/mono5/lib
+  build-args:
+    - --share=ipc
+    - --socket=x11
+    - --device=dri
   arch:
     x86_64:
       env:
