@@ -8,14 +8,18 @@ writable-sdk: true
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.mono5
 command: godot
-
+finish-args:
+  - --share=network
+  - --share=ipc
+  - --socket=x11
+  - --socket=pulseaudio
+  - --device=all
+  - --filesystem=host
+  - --talk-name=org.freedesktop.Flatpak
 build-options:
   append-path: /usr/lib/sdk/mono5/bin
   append-ld-library-path: /usr/lib/sdk/mono5/lib
-  build-args:
-    - --share=ipc
-    - --socket=x11
-    - --device=dri
+  append-pkg-config-path: /usr/lib/sdk/mono5/lib/pkgconfig
   arch:
     x86_64:
       env:
@@ -24,8 +28,6 @@ build-options:
         SCONS_FLAGS_EXTRA: use_lto=yes
 
   env:
-    PKG_CONFIG_PATH: /usr/lib/sdk/mono5/lib/pkgconfig
-
     # Will be appended to the version string displayed in the editor and command-line help
     BUILD_NAME: flathub
 
@@ -49,15 +51,6 @@ build-options:
       builtin_libvpx=no
       builtin_zlib=no
       udev=no
-
-finish-args:
-  - --share=ipc
-  - --socket=x11
-  - --share=network
-  - --socket=pulseaudio
-  - --filesystem=host
-  - --device=all
-  - --talk-name=org.freedesktop.Flatpak
 
 modules:
   - shared-modules/glu/glu-9.json
