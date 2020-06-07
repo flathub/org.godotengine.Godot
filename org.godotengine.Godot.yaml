@@ -58,7 +58,6 @@ modules:
   - name: scons
     buildsystem: simple
     cleanup: ['*']
-
     sources:
       - type: archive
         sha256: 722ed104b5c624ecdc89bd4e02b094d2b14d99d47b5d0501961e47f579a2007c
@@ -68,11 +67,12 @@ modules:
       - python3 setup.py install --prefix=/app
 
   - name: msbuild
+    buildsystem: simple
+    cleanup: ['*']
     sources:
       - type: file
         url: http://download.mono-project.com/repo/ubuntu/pool/main/m/msbuild/msbuild_16.5+xamarinxplat.2020.02.20.11.54-0xamarin2+debian10b1_all.deb
         sha256: 84bb493a82ba62f634c247b448d0159f4a6e528f063ad01f0e8a981ec392cc6c
-    buildsystem: simple
     build-commands:
       - ar x msbuild_*.deb
       - tar xf data.tar.xz
@@ -80,20 +80,78 @@ modules:
       - cp -a usr/. /usr/lib/sdk/mono5/
 
   - name: nuget
+    buildsystem: simple
+    cleanup: ['*']
     sources:
       - type: file
         url: http://download.mono-project.com/repo/ubuntu/pool/main/n/nuget/nuget_5.5.0.6382.bin-0xamarin1+debian10b1_all.deb
         sha256: c8bcf7c504168472f34e5ac98f38ad757cf4db9bb540e6da658aa693f9bc9403
-    buildsystem: simple
     build-commands:
       - ar x nuget_*.deb
       - tar xf data.tar.xz
       - sed -e 's|/usr/|/usr/lib/sdk/mono5/|g' -i usr/bin/nuget
       - cp -a usr/. /usr/lib/sdk/mono5/
 
+  - name: xmu
+    buildsystem: autotools
+    cleanup: ['*']
+    sources:
+      - type: archive
+        url: https://www.x.org/releases/individual/lib/libXmu-1.1.3.tar.gz
+        sha256: 5bd9d4ed1ceaac9ea023d86bf1c1632cd3b172dce4a193a72a94e1d9df87a62e
+
+  - name: xaw
+    buildsystem: autotools
+    cleanup: ['*']
+    sources:
+      - type: archive
+        url: https://www.x.org/releases/individual/lib/libXaw-1.0.13.tar.gz
+        sha256: 7e74ac3e5f67def549722ff0333d6e6276b8becd9d89615cda011e71238ab694
+
+  - name: fontenc
+    buildsystem: autotools
+    cleanup: ['*']
+    sources:
+      - type: archive
+        url: https://www.x.org/releases/individual/lib/libfontenc-1.1.4.tar.gz
+        sha256: 895ee0986b32fbfcda7f4f25ef6cbacfa760e1690bf59f02085ce0e7d1eebb41
+
+  - name: xfont2
+    buildsystem: autotools
+    cleanup: ['*']
+    sources:
+      - type: archive
+        url: https://www.x.org/releases/individual/lib/libXfont2-2.0.4.tar.gz
+        sha256: 74e577294c7406b284c50dfcfb5e5d9b3b0cc2d83d33866920ffe1e4860f585a
+
+  - name: fontutil
+    buildsystem: autotools
+    cleanup: ['*']
+    sources:
+      - type: archive
+        url: https://www.x.org/releases/individual/font/font-util-1.3.2.tar.gz
+        sha256: f115a3735604de1e852a4bf669be0269d8ce8f21f8e0e74ec5934b31dadc1e76
+
+  - name: tirpc
+    buildsystem: autotools
+    config-opts:
+      - --disable-gssapi
+    cleanup: ['*']
+    sources:
+      - type: archive
+        url: https://downloads.sourceforge.net/libtirpc/libtirpc-1.2.6.tar.bz2
+        sha256: 4278e9a5181d5af9cd7885322fdecebc444f9a3da87c526e7d47f7a12a37d1cc
+
+  - name: xserver
+    buildsystem: meson
+    cleanup: ['*']
+    sources:
+      - type: archive
+        url: https://www.x.org/releases/individual/xserver/xorg-server-1.20.8.tar.gz
+        sha256: 1e1f9245301cb3b7e89cb3ac7ae9ac513e362963fae92d2153762e3a95758f0b
+
   - name: godot-tools
     buildsystem: simple
-
     sources:
       - type: archive
         sha256: 85fd73d742cc64887056a232f8f7a622112e78b51f31d4d08db0f982e5f3a023
@@ -122,6 +180,8 @@ modules:
         path: org.godotengine.Godot.appdata.xml
 
     build-commands:
+      - Xvfb ":1" -screen 0 1024x768x24 </dev/null &
+      - export DISPLAY=":1"
       - python3 /app/bin/scons $SCONS_FLAGS $SCONS_FLAGS_EXTRA mono_glue=no -j "$FLATPAK_BUILDER_N_JOBS"
       - bin/godot.x11.tools.* --generate-mono-glue modules/mono/glue
       - python3 /app/bin/scons $SCONS_FLAGS $SCONS_FLAGS_EXTRA target=release_debug -j "$FLATPAK_BUILDER_N_JOBS"
