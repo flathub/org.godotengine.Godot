@@ -3,6 +3,9 @@ runtime: org.freedesktop.Platform
 runtime-version: '20.08'
 default-branch: stable
 sdk: org.freedesktop.Sdk
+sdk-extensions:
+  # Required for Android custom builds.
+  - org.freedesktop.Sdk.Extension.openjdk8
 command: godot
 
 build-options:
@@ -44,6 +47,8 @@ finish-args:
   - --filesystem=host
   - --device=all
   - --talk-name=org.freedesktop.Flatpak
+  # Required for Android custom builds.
+  - --env=JAVA_HOME=/app/jre
 
 modules:
   - shared-modules/glu/glu-9.json
