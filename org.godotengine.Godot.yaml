@@ -68,6 +68,9 @@ modules:
         sha256: fcbbc6aaab16059e6622482c3358d58098d34ed51e099c854ec0ad79f466d555
         url: https://downloads.tuxfamily.org/godotengine/3.3/godot-3.3-stable.tar.xz
 
+      - type: patch
+        path: godot-disable-exporting-to-android.patch
+
       - type: script
         dest-filename: godot.sh
         commands:

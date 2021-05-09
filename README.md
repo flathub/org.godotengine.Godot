@@ -47,6 +47,10 @@ Exec Flags: --host code --reuse-window {project} --goto {file}:{line}:{col}
 
 - No C#/Mono support
   ([#8](https://github.com/flathub/org.godotengine.Godot/issues/8)).
+- No support for exporting to Android ([#63](https://github.com/flathub/org.godotengine.Godot/issues/63)).
+
+To bypass those limitations,
+[download a Godot build from godotengine.org](https://godotengine.org/download).
 
 ## Building from source
 

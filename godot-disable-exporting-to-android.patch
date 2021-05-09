@@ -1,0 +1,26 @@
+From 7eb3be3fa26456c5e28e91d295ebf5f6aa6897a5 Mon Sep 17 00:00:00 2001
+From: Hugo Locurcio <hugo.locurcio@hugo.pro>
+Date: Sun, 9 May 2021 20:18:22 +0200
+Subject: [PATCH] Disable exporting to Android as it doesn't work due to
+ Flatpak sandboxing
+
+---
+ platform/android/export/export.cpp | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/platform/android/export/export.cpp b/platform/android/export/export.cpp
+index 973f0febb8..e16f964935 100644
+--- a/platform/android/export/export.cpp
++++ b/platform/android/export/export.cpp
+@@ -2084,6 +2084,9 @@ public:
+ 		String err;
+ 		bool valid = false;
+
++		err = "The Flatpak build of Godot does not support exporting to Android. Download a Godot build from godotengine.org and try again.";
++		return valid;
++
+ 		// Look for export templates (first official, and if defined custom templates).
+
+ 		if (!bool(p_preset->get("custom_template/use_custom_build"))) {
+--
+2.30.2
