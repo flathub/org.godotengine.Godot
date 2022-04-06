@@ -3,7 +3,8 @@ runtime: org.freedesktop.Platform
 runtime-version: '21.08'
 default-branch: stable
 sdk: org.freedesktop.Sdk
-sdk-extensions: [org.freedesktop.Sdk.Extension.openjdk11]
+sdk-extensions: 
+  - org.freedesktop.Sdk.Extension.openjdk11
 command: godot
 
 build-options:
@@ -50,7 +51,8 @@ modules:
 
   - name: openjdk
     buildsystem: simple
-    build-commands: [/usr/lib/sdk/openjdk11/install.sh]
+    build-commands: 
+      - /usr/lib/sdk/openjdk11/install.sh
 
   - name: scons
     buildsystem: simple
