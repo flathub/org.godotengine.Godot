@@ -71,8 +71,8 @@ modules:
 
     sources:
       - type: archive
-        sha256: 912acc4a80cdf1ed0eeccc8245271022c74f3671926709fd0142d920457d7507
-        url: https://downloads.tuxfamily.org/godotengine/3.5/beta4/godot-3.5-beta4.tar.xz
+        sha256: 0d9fce108d7f0452fe435e14f7d3059d870b976abd198239cd798c6fdef8d02b
+        url: https://downloads.tuxfamily.org/godotengine/4.0/beta10/godot-4.0-beta10.tar.xz
 
       - type: script
         dest-filename: godot.sh
@@ -85,7 +85,7 @@ modules:
         path: org.godotengine.Godot.appdata.xml
 
     build-commands:
-      - python3 /app/bin/scons $SCONS_FLAGS $SCONS_FLAGS_EXTRA tools=yes target=release_debug -j "$FLATPAK_BUILDER_N_JOBS"
+      - python3 /app/bin/scons $SCONS_FLAGS $SCONS_FLAGS_EXTRA tools=yes target=template_release -j "$FLATPAK_BUILDER_N_JOBS"
       - install -D -m755 bin/godot.x11.opt.tools.* /app/bin/godot-bin
       - install -D -m755 godot.sh /app/bin/godot
       - desktop-file-edit --set-icon=$FLATPAK_ID misc/dist/linux/$FLATPAK_ID.desktop
