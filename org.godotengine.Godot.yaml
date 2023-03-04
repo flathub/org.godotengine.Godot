@@ -85,7 +85,7 @@ modules:
         path: org.godotengine.Godot.appdata.xml
 
     build-commands:
-      - python3 /app/bin/scons $SCONS_FLAGS $SCONS_FLAGS_EXTRA tools=yes target=release_debug -j "$FLATPAK_BUILDER_N_JOBS"
+      - python3 /app/bin/scons $SCONS_FLAGS $SCONS_FLAGS_EXTRA target=editor -j "$FLATPAK_BUILDER_N_JOBS"
       - install -D -m755 bin/godot.x11.opt.tools.* /app/bin/godot-bin
       - install -D -m755 godot.sh /app/bin/godot
       - desktop-file-edit --set-icon=$FLATPAK_ID misc/dist/linux/$FLATPAK_ID.desktop
