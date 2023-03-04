@@ -22,7 +22,7 @@ build-options:
     # SCons flags common to all builds
     # Shouldn't be quoted when used as it's a single string, not an array
     SCONS_FLAGS: >
-      platform=x11
+      platform=linuxbsd
       CCFLAGS=-I/app/include
       prefix=/app
       unix_global_settings_path=/app
@@ -86,7 +86,7 @@ modules:
 
     build-commands:
       - python3 /app/bin/scons $SCONS_FLAGS $SCONS_FLAGS_EXTRA target=editor -j "$FLATPAK_BUILDER_N_JOBS"
-      - install -D -m755 bin/godot.x11.opt.tools.* /app/bin/godot-bin
+      - install -D -m755 bin/godot.linuxbsd.editor.* /app/bin/godot-bin
       - install -D -m755 godot.sh /app/bin/godot
       - desktop-file-edit --set-icon=$FLATPAK_ID misc/dist/linux/$FLATPAK_ID.desktop
       - install -Dm644 misc/dist/linux/$FLATPAK_ID.desktop /app/share/applications/$FLATPAK_ID.desktop
