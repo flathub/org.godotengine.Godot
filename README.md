@@ -34,7 +34,7 @@ To use the built-in Blender importer, a script named `blender` should be placed 
 ```
 #!/bin/bash
 
-flatpak-spawn --host flatpak run org.blender.Blender "$@"
+flatpak-spawn --host blender "$@"
 ```
 
 Then, configure the path to the Blender script in the Editor Settings (Filesystem > Import > Blender > Blender 3 Path).
