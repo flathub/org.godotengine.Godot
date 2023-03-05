@@ -37,7 +37,7 @@ To use the built-in Blender importer, a script named `blender` should be placed 
 flatpak-spawn --host blender "$@"
 ```
 
-Then, configure the path to the Blender script in the Editor Settings (Filesystem > Import > Blender > Blender 3 Path).
+Then make the script executable using `chmod +x blender` and configure the path to the Blender script in the Editor Settings (**Filesystem > Import > Blender > Blender 3 Path**).
 
 ## Using an external script editor
 
