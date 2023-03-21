@@ -32,14 +32,16 @@ This version of Godot is built with special [permissions](https://github.com/fla
 
 Godot expects the Blender executable to be named `blender` (lowercase), so a script exactly named `blender` that executes Blender via `flatpak-spawn --host` should be created.  Below are two [Bash](https://www.gnu.org/software/bash/) scripts which may need to be modified depending on your [shell](https://en.wikipedia.org/wiki/Shell_(computing)) and how Blender is installed.  
 
-*Bash script assuming Blender installed on PATH*
+### Bash script assuming Blender is installed in `PATH` (e.g. using distribution packages)
+
 ```bash
 #!/bin/bash
 
 flatpak-spawn --host blender "$@"
 ```
 
-*Bash script assuming Blender installed from Flathub*
+### Bash script assuming Blender is installed from Flathub
+
 ```bash
 #!/bin/bash
 
