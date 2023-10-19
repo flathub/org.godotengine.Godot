@@ -73,8 +73,8 @@ modules:
 
     sources:
       - type: archive
-        sha256: 11b54667ce776d922415242bb4af3b11d024682167fbe26fe13f8a49ddf4ac64
-        url: https://downloads.tuxfamily.org/godotengine/4.2/dev6/godot-4.2-dev6.tar.xz
+        sha256: a00d95dd52c88842204c88fbe9cd0ee2c7d6fc8cda1a9a1b8247b8a985a6481f
+        url: https://downloads.tuxfamily.org/godotengine/4.2/beta2/godot-4.2-beta2.tar.xz
 
       - type: script
         dest-filename: godot.sh
