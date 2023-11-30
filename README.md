@@ -72,8 +72,7 @@ Exec Flags: --host code --reuse-window {project} --goto {file}:{line}:{col}
 
 ## Limitations
 
-- No C#/Mono support
-  ([#8](https://github.com/flathub/org.godotengine.Godot/issues/8)).
+- For C#/Mono support, install [org.godotengine.GodotSharp](https://flathub.org/apps/org.godotengine.GodotSharp) instead.
 
 ## Building from source
 
