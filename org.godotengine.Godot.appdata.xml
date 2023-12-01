@@ -21,7 +21,7 @@
     </ul>
     <p>Limitations of the Flatpak version:</p>
     <ul>
-      <li>No C#/Mono support. See: https://github.com/flathub/org.godotengine.Godot/issues/8</li>
+      <li>For C#/Mono support, install org.godotengine.GodotSharp instead: https://flathub.org/apps/org.godotengine.GodotSharp</li>
       <li>External script editors are supported, but you need to follow the steps described here: https://github.com/flathub/org.godotengine.Godot#using-an-external-script-editor</li>
       <li>Godot 4's Blender importer is supported, but Blender needs to be installed on your system and you need to follow the steps described here: https://github.com/flathub/org.godotengine.Godot#using-blender</li>
     </ul>
@@ -53,6 +53,7 @@
   </screenshots>
   <content_rating type="oars-1.1" />
   <releases>
+    <release version="4.2" date="2023-11-30"/>
     <release version="4.1.3" date="2023-11-01"/>
     <release version="4.1.2" date="2023-10-04"/>
     <release version="4.1.1" date="2023-07-17"/>
