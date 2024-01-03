@@ -87,7 +87,7 @@ modules:
         dest-filename: godot.sh
         commands:
           - export APPDATA="$XDG_DATA_HOME"
-          - export PATH="/app/jdk/bin:$PATH"
+          - if [ -f "$JAVA_HOME/enable.sh" ]; then source "$JAVA_HOME/enable.sh"; fi
           - /app/bin/godot-bin "$@"
 
       - type: file
