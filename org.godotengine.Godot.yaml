@@ -1,10 +1,8 @@
 app-id: org.godotengine.Godot
-runtime: org.freedesktop.Platform
+runtime: org.freedesktop.Sdk
 runtime-version: '23.08'
 default-branch: stable
 sdk: org.freedesktop.Sdk
-sdk-extensions:
-  - org.freedesktop.Sdk.Extension.openjdk11
 command: godot
 
 build-options:
@@ -47,14 +45,10 @@ finish-args:
   - --filesystem=host
   - --device=all
   - --talk-name=org.freedesktop.Flatpak
+  - --env=JAVA_HOME=/usr/lib/sdk/openjdk17
 
 modules:
   - shared-modules/glu/glu-9.json
-
-  - name: openjdk
-    buildsystem: simple
-    build-commands:
-      - /usr/lib/sdk/openjdk11/install.sh
 
   - name: scons
     buildsystem: simple
@@ -73,14 +67,14 @@ modules:
 
     sources:
       - type: archive
-        sha256: 93c467562f6417da966646b60a27bb4641357e95902fb7a1adfa515049742556
-        url: https://downloads.tuxfamily.org/godotengine/4.3/dev1/godot-4.3-dev1.tar.xz
+        sha256: 2c430a49e25701c80b349d903e2a611c7e746645d9b7d70dc9bb8ba269ce2fa0
+        url: https://downloads.tuxfamily.org/godotengine/4.3/dev2/godot-4.3-dev2.tar.xz
 
       - type: script
         dest-filename: godot.sh
         commands:
           - export APPDATA="$XDG_DATA_HOME"
-          - export PATH="/app/jre/bin:$PATH"
+          - if [ -f "$JAVA_HOME/enable.sh" ]; then source "$JAVA_HOME/enable.sh"; fi
           - /app/bin/godot-bin "$@"
 
       - type: file
