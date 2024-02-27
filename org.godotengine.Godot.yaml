@@ -5,7 +5,8 @@ default-branch: stable
 sdk: org.freedesktop.Sdk
 add-extensions:
   org.freedesktop.Sdk.Extension.openjdk17:
-    directory: openjdk17
+    directory: jdk
+    add-ld-path: jvm/openjdk-17
     subdirectories: true
     no-autodownload: false
 command: godot
@@ -50,7 +51,7 @@ finish-args:
   - --filesystem=host
   - --device=all
   - --talk-name=org.freedesktop.Flatpak
-  - --env=JAVA_HOME=/usr/lib/sdk/openjdk17
+  - --env=JAVA_HOME=/app/jdk
 
 modules:
   - shared-modules/glu/glu-9.json
