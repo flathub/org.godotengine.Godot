@@ -9,6 +9,7 @@ add-extensions:
     version: '23.08'
     add-ld-path: jvm/openjdk-17
     no-autodownload: false
+    autodelete: false
 command: godot
 
 build-options:
