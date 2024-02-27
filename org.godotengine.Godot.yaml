@@ -5,8 +5,8 @@ default-branch: stable
 sdk: org.freedesktop.Sdk
 add-extensions:
   org.freedesktop.Sdk.Extension.openjdk17:
-    version: '23.08'
     directory: jdk
+    version: '23.08'
     add-ld-path: jvm/openjdk-17
     subdirectories: true
     no-autodownload: false
