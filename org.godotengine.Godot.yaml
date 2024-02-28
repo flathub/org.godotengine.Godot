@@ -10,8 +10,6 @@ add-extensions:
     add-ld-path: jvm/openjdk-17
     no-autodownload: false
     autodelete: false
-cleanup-commands:
-  - mkdir -p /app/jdk
 command: godot
 
 build-options:
