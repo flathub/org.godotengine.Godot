@@ -57,6 +57,12 @@ finish-args:
 modules:
   - shared-modules/glu/glu-9.json
 
+  - name: jdk
+    buildsystem: simple
+    build-commands:
+      - mkdir -p /app/jdk
+      - ln -s jdk/jvm/openjdk-17 /app/jre
+
   - name: scons
     buildsystem: simple
     cleanup: ['*']
