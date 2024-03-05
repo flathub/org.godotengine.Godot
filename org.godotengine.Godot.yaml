@@ -6,9 +6,10 @@ sdk: org.freedesktop.Sdk
 add-extensions:
   org.freedesktop.Sdk.Extension.openjdk17:
     directory: jdk
+    version: '23.08'
     add-ld-path: jvm/openjdk-17
-    subdirectories: true
     no-autodownload: false
+    autodelete: false
 command: godot
 
 build-options:
@@ -55,6 +56,12 @@ finish-args:
 
 modules:
   - shared-modules/glu/glu-9.json
+
+  - name: jdk
+    buildsystem: simple
+    build-commands:
+      - mkdir -p /app/jdk
+      - ln -s jdk/jvm/openjdk-17 /app/jre
 
   - name: scons
     buildsystem: simple
