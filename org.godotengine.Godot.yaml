@@ -56,6 +56,11 @@ finish-args:
 
 modules:
   - shared-modules/glu/glu-9.json
+  
+  - name: openjdk17
+    buildsystem: simple
+    build-commands:
+      - /usr/lib/sdk/openjdk17/installjdk.sh
 
   - name: jdk
     buildsystem: simple
@@ -80,14 +85,14 @@ modules:
 
     sources:
       - type: archive
-        sha256: be2d5b8333628e9135dd6fce992ebd16481b97e99d6facc2296411a7b7f72a62
-        url: https://downloads.tuxfamily.org/godotengine/4.2.1/godot-4.2.1-stable.tar.xz
+        sha256: da14e36448f1efd2955fe85d7ededc9e6ac8c893f76723b4852e7587306c761d
+        url: https://downloads.tuxfamily.org/godotengine/4.2.2/godot-4.2.2-stable.tar.xz
 
       - type: script
         dest-filename: godot.sh
         commands:
           - export APPDATA="$XDG_DATA_HOME"
-          - if [ -f "$JAVA_HOME/enable.sh" ]; then source "$JAVA_HOME/enable.sh"; fi
+          - export PATH="/app/jdk/bin:$PATH"
           - /app/bin/godot-bin "$@"
 
       - type: file
