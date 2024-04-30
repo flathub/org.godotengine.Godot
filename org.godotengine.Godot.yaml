@@ -3,8 +3,13 @@ runtime: org.freedesktop.Sdk
 runtime-version: '23.08'
 default-branch: stable
 sdk: org.freedesktop.Sdk
-sdk-extensions:
-  - org.freedesktop.Sdk.Extension.openjdk17
+add-extensions:
+  org.freedesktop.Sdk.Extension.openjdk17:
+    directory: jdk
+    version: '23.08'
+    add-ld-path: jvm/openjdk-17
+    no-autodownload: false
+    autodelete: false
 command: godot
 
 build-options:
@@ -51,11 +56,12 @@ finish-args:
 
 modules:
   - shared-modules/glu/glu-9.json
-  
-  - name: openjdk17
+
+  - name: jdk
     buildsystem: simple
     build-commands:
-      - /usr/lib/sdk/openjdk17/installjdk.sh
+      - mkdir -p /app/jdk
+      - ln -s jdk/jvm/openjdk-17 /app/jre
 
   - name: scons
     buildsystem: simple
@@ -81,7 +87,7 @@ modules:
         dest-filename: godot.sh
         commands:
           - export APPDATA="$XDG_DATA_HOME"
-          - export PATH="/app/jdk/bin:$PATH"
+          - if [ -f "$JAVA_HOME/enable.sh" ]; then source "$JAVA_HOME/enable.sh"; fi
           - /app/bin/godot-bin "$@"
 
       - type: file
