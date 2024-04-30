@@ -56,11 +56,6 @@ finish-args:
 
 modules:
   - shared-modules/glu/glu-9.json
-  
-  - name: openjdk17
-    buildsystem: simple
-    build-commands:
-      - /usr/lib/sdk/openjdk17/installjdk.sh
 
   - name: jdk
     buildsystem: simple
