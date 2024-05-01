@@ -81,7 +81,11 @@ modules:
     sources:
       - type: archive
         sha256: da14e36448f1efd2955fe85d7ededc9e6ac8c893f76723b4852e7587306c761d
-        url: https://downloads.tuxfamily.org/godotengine/4.2.2/godot-4.2.2-stable.tar.xz
+        url: https://github.com/godotengine/godot/releases/download/4.2.2-stable/godot-4.2.2-stable.tar.xz
+        x-checker-data:
+          type: anitya
+          project-id: 12162
+          url-template: https://github.com/godotengine/godot/releases/download/$version/godot-$version.tar.xz
 
       - type: script
         dest-filename: godot.sh
