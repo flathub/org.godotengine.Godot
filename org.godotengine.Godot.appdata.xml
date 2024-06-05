@@ -6,6 +6,10 @@
   <developer_name>The Godot Engine Community</developer_name>
   <launchable type="desktop-id">org.godotengine.Godot.desktop</launchable>
   <description>
+    <p>
+      <em>NOTE: This Flatpak is unofficial and not supported by Godot Engine developers.</em>
+      Find officially supported binaries on godotengine.org.
+    </p>
     <p>The feature-packed, cross-platform game engine to create 2D and 3D games from a unified interface. Godot Engine provides a comprehensive set of common tools, so that you can focus on making games without having to reinvent the wheel. Games can be exported in one click to a number of platforms, including the major desktop platforms (Linux, macOS, Windows) as well as mobile (Android, iOS), web-based (HTML5) platforms and consoles (Switch, PS4 and Xbox One - via thirdparty publishers).</p>
     <p>Completely free and open source under the very permissive MIT license. No strings attached, no royalties, nothing. Your game is yours down to the last line of engine code. Godot's development is fully independent and community-driven, empowering you to help shape the engine to match your expectations. It is supported by the non-profit Godot Foundation.</p>
     <p>Create games with ease, using Godot's unique approach to game development:</p>
@@ -17,7 +21,7 @@
       <li>Persistent live editing where changes are not lost after stopping the game. It even works on mobile devices!</li>
       <li>Create your own custom tools with ease using the incredible tool system.</li>
     </ul>
-    <p>NOTE: This Flatpak is unofficial and not supported by Godot Engine developers; find officially supported binaries on godotengine.org. Current limitations of this Flatpak version:</p>
+    <p>Current limitations of this Flatpak version:</p>
     <ul>
       <li>For C#/Mono support, install org.godotengine.GodotSharp instead: https://flathub.org/apps/org.godotengine.GodotSharp</li>
       <li>External script editors are supported, but you need to follow the steps described here: https://github.com/flathub/org.godotengine.Godot#using-an-external-script-editor</li>
