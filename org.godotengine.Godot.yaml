@@ -49,6 +49,7 @@ finish-args:
   - --share=network
   - --socket=pulseaudio
   - --filesystem=host
+  - --filesystem=xdg-run/speech-dispatcher # For TTS via libspeechd
   - --device=all
   - --talk-name=org.freedesktop.Flatpak
 
@@ -59,6 +60,57 @@ modules:
     buildsystem: simple
     build-commands:
       - mkdir -p /app/jdk
+
+  # This section is borrowed from: 
+  # https://github.com/flathub/org.electronjs.Electron2.BaseApp/blob/c4635368f6c11ace8c1290525da4435d13d9173f/org.electronjs.Electron2.BaseApp.yml#L103
+  # https://github.com/flathub/net.lutris.Lutris/blob/76e94a0b80ef3ebc1b9a6b61f47d736f5ddd772c/net.lutris.Lutris.yml#L495
+  # https://gitlab.archlinux.org/archlinux/packaging/packages/speech-dispatcher/-/blob/414baaf78b5fe416df88a89ac18d2dd579a0c653/PKGBUILD
+  - name: libspeechd
+    config-opts:
+      - --disable-static
+      - --with-ibmtts=no
+      - --with-kali=no
+      - --with-baratinoo=no
+      - --with-voxin=no
+      - --without-flite
+      - --disable-python
+    no-make-install: true
+    post-install:
+      - cd ./src/api/c && make install
+    cleanup:
+      - "*.la"
+      - "*.a"
+      - /include
+
+    sources:
+      - type: archive
+        url: https://github.com/brailcom/speechd/releases/download/0.11.5/speech-dispatcher-0.11.5.tar.gz
+        sha512: d6d880bce0ae5bc2a5d519ef7740c689ae8b4b0bb658379762810e4beae3e465a429fbe19f7c490e89db0ea6a36aedd4b2287ac9251b90059b5c2cb3c0dd8a28
+        x-checker-data:
+          type: anitya
+          project-id: 13411
+          stable-only: true
+          url-template: https://github.com/brailcom/speechd/releases/download/$version/speech-dispatcher-$version.tar.gz
+
+    modules:
+      # dotconf provides utility functions to parse config files. It's only linked with the speech-dispatcher server,
+      # which we aren't building, but it needs to exist to get past the ./configure step anyway
+      - name: dotconf
+        sources:
+          - type: archive
+            url: https://github.com/williamh/dotconf/archive/refs/tags/v1.4.1.tar.gz
+            sha512: a6cada8621295b268d4b4fd85bc0c207e78324c9e84754ead2fdf6c1598ec8bdf626f9c24e66063d921c95d73e83b50ab50416a9b4c9a7a631392552ec46f55a
+            x-checker-data:
+              type: anitya
+              project-id: 13410
+              url-template: https://github.com/williamh/dotconf/archive/refs/tags/v$version.tar.gz
+
+          - type: script
+            commands:
+              - autoreconf -fiv
+            dest-filename: autogen.sh
+        cleanup:
+          - "*"
 
   - name: scons
     buildsystem: simple
