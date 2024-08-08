@@ -1,7 +1,6 @@
 app-id: org.godotengine.Godot
 runtime: org.freedesktop.Sdk
 runtime-version: '23.08'
-default-branch: stable
 sdk: org.freedesktop.Sdk
 command: godot
 
@@ -68,8 +67,8 @@ modules:
 
     sources:
       - type: archive
-        sha256: e71b9589359d1b1c4aa7b7925eb1893644c636882c9a95524ffdd07c69a70353
-        url: https://downloads.tuxfamily.org/godotengine/4.3/rc1/godot-4.3-rc1.tar.xz
+        sha256: a428c76f865d22a7fa7f6b252f484efd0143dbbf0c8b82eaacc1d0a35780cf9d
+        url: https://downloads.tuxfamily.org/godotengine/4.3/rc3/godot-4.3-rc3.tar.xz
 
       - type: script
         dest-filename: godot.sh
