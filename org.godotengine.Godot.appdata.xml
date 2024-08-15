@@ -39,7 +39,7 @@
   <url type="translate">https://hosted.weblate.org/projects/godot-engine/godot</url>
   <url type="contact">https://godotengine.org/contact/</url>
   <url type="vcs-browser">https://github.com/godotengine/godot</url>
-  <url type="contribute">https://docs.godotengine.org/en/stable/contributing/ways_to_contribute.html</url>
+  <url type="contribute">https://docs.godotengine.org/en/stable/contributing/how_to_contribute.html</url>
   <screenshots>
     <screenshot type="default">
       <image type="source">https://raw.githubusercontent.com/godotengine/godot-website/9a476ed665642572ecc4c54c0b3753f7e2b60b7f/storage/app/media/3.0%20release/gltf.png</image>
@@ -56,6 +56,7 @@
   </screenshots>
   <content_rating type="oars-1.1" />
   <releases>
+    <release version="4.3" date="2024-08-15"/>
     <release version="4.2.2" date="2024-04-17"/>
     <release version="4.2.1" date="2023-12-12"/>
     <release version="4.2" date="2023-11-30"/>
