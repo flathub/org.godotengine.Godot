@@ -1,7 +1,6 @@
 app-id: org.godotengine.Godot
 runtime: org.freedesktop.Sdk
 runtime-version: '23.08'
-default-branch: stable
 sdk: org.freedesktop.Sdk
 add-extensions:
   org.freedesktop.Sdk.Extension.openjdk17:
@@ -133,8 +132,8 @@ modules:
 
     sources:
       - type: archive
-        sha256: da14e36448f1efd2955fe85d7ededc9e6ac8c893f76723b4852e7587306c761d
-        url: https://github.com/godotengine/godot/releases/download/4.2.2-stable/godot-4.2.2-stable.tar.xz
+        sha256: 751e55bfad8e04b846f9cf7b6eb80e058986a2cb1b103fc0fe6a4d8526a20e56
+        url: https://github.com/godotengine/godot/releases/download/4.3-stable/godot-4.3-stable.tar.xz
         x-checker-data:
           type: anitya
           project-id: 12162
