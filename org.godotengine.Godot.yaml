@@ -137,7 +137,7 @@ modules:
         url: https://github.com/godotengine/godot/releases/download/4.3-stable/godot-4.3-stable.tar.xz
         x-checker-data:
           type: anitya
-          project-id: 12162
+          project-id: 373975
           url-template: https://github.com/godotengine/godot/releases/download/$version/godot-$version.tar.xz
 
       - type: script
