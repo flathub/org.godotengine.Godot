@@ -138,7 +138,7 @@ modules:
         x-checker-data:
           type: anitya
           project-id: 373975
-          url-template: https://github.com/godotengine/godot/releases/download/$version/godot-$version.tar.xz
+          url-template: https://github.com/godotengine/godot/releases/download/$version-stable/godot-$version-stable.tar.xz
 
       - type: script
         dest-filename: godot.sh
