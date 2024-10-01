@@ -27,8 +27,6 @@ build-options:
     SCONS_FLAGS: >
       platform=linuxbsd
       CCFLAGS=-I/app/include
-      prefix=/app
-      unix_global_settings_path=/app
       progress=no
       builtin_freetype=no
       builtin_libogg=no
@@ -61,7 +59,7 @@ modules:
     build-commands:
       - mkdir -p /app/jdk
 
-  # This section is borrowed from: 
+  # This section is borrowed from:
   # https://github.com/flathub/org.electronjs.Electron2.BaseApp/blob/c4635368f6c11ace8c1290525da4435d13d9173f/org.electronjs.Electron2.BaseApp.yml#L103
   # https://github.com/flathub/net.lutris.Lutris/blob/76e94a0b80ef3ebc1b9a6b61f47d736f5ddd772c/net.lutris.Lutris.yml#L495
   # https://gitlab.archlinux.org/archlinux/packaging/packages/speech-dispatcher/-/blob/414baaf78b5fe416df88a89ac18d2dd579a0c653/PKGBUILD
