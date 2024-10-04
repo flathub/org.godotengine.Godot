@@ -1,11 +1,11 @@
 app-id: org.godotengine.Godot
 runtime: org.freedesktop.Sdk
-runtime-version: '23.08'
+runtime-version: &runtime-version '24.08'
 sdk: org.freedesktop.Sdk
 add-extensions:
   org.freedesktop.Sdk.Extension.openjdk17:
     directory: jdk
-    version: '23.08'
+    version: *runtime-version
     no-autodownload: false
     autodelete: false
 command: godot
