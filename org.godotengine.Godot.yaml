@@ -1,7 +1,13 @@
 app-id: org.godotengine.Godot
 runtime: org.freedesktop.Sdk
-runtime-version: '23.08'
+runtime-version: &runtime-version '24.08'
 sdk: org.freedesktop.Sdk
+add-extensions:
+  org.freedesktop.Sdk.Extension.openjdk17:
+    directory: jdk
+    version: *runtime-version
+    no-autodownload: false
+    autodelete: false
 command: godot
 
 build-options:
@@ -67,8 +73,8 @@ modules:
 
     sources:
       - type: archive
-        sha256: e32020510f2b7a63284e09db332f8f95398bfdf9b77242d05e5de00e8d5032e6
-        url: https://github.com/godotengine/godot-builds/releases/download/4.4-dev4/godot-4.4-dev4.tar.xz
+        sha256: 2fc6d31d4d5768a0a6e2179b5d909b9d8fb558db9db2123bfcd6bed094a45b35
+        url: https://github.com/godotengine/godot-builds/releases/download/4.4-dev5/godot-4.4-dev5.tar.xz
 
       - type: script
         dest-filename: godot.sh
