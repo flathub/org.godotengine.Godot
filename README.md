@@ -72,8 +72,7 @@ Exec Flags: --host code --reuse-window {project} --goto {file}:{line}:{col}
 
 ## Limitations
 
-- No C#/Mono support
-  ([#8](https://github.com/flathub/org.godotengine.Godot/issues/8)).
+- For C#/Mono support, install [org.godotengine.GodotSharp](https://flathub.org/apps/org.godotengine.GodotSharp) instead.
 
 ## Building from source
 
@@ -84,7 +83,7 @@ then enter the following commands in a terminal:
 ```bash
 git clone --recursive https://github.com/flathub/org.godotengine.Godot.git
 cd org.godotengine.Godot/
-flatpak install --user flathub org.freedesktop.Sdk//22.08 -y
+flatpak install --user flathub org.freedesktop.Sdk//24.08 -y
 flatpak-builder --force-clean --install --user -y builddir org.godotengine.Godot.yaml
 ```
 

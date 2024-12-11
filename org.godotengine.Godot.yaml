@@ -27,8 +27,6 @@ build-options:
     SCONS_FLAGS: >
       platform=linuxbsd
       CCFLAGS=-I/app/include
-      prefix=/app
-      unix_global_settings_path=/app
       progress=no
       builtin_freetype=no
       builtin_libogg=no
@@ -49,12 +47,68 @@ finish-args:
   - --share=network
   - --socket=pulseaudio
   - --filesystem=host
+  - --filesystem=xdg-run/speech-dispatcher # For TTS via libspeechd
   - --device=all
   - --talk-name=org.freedesktop.Flatpak
-  - --env=JAVA_HOME=/usr/lib/sdk/openjdk17
 
 modules:
   - shared-modules/glu/glu-9.json
+
+  - name: jdk
+    buildsystem: simple
+    build-commands:
+      - mkdir -p /app/jdk
+
+  # This section is borrowed from:
+  # https://github.com/flathub/org.electronjs.Electron2.BaseApp/blob/c4635368f6c11ace8c1290525da4435d13d9173f/org.electronjs.Electron2.BaseApp.yml#L103
+  # https://github.com/flathub/net.lutris.Lutris/blob/76e94a0b80ef3ebc1b9a6b61f47d736f5ddd772c/net.lutris.Lutris.yml#L495
+  # https://gitlab.archlinux.org/archlinux/packaging/packages/speech-dispatcher/-/blob/414baaf78b5fe416df88a89ac18d2dd579a0c653/PKGBUILD
+  - name: libspeechd
+    config-opts:
+      - --disable-static
+      - --with-ibmtts=no
+      - --with-kali=no
+      - --with-baratinoo=no
+      - --with-voxin=no
+      - --without-flite
+      - --disable-python
+    no-make-install: true
+    post-install:
+      - cd ./src/api/c && make install
+    cleanup:
+      - '*.la'
+      - '*.a'
+      - /include
+
+    sources:
+      - type: archive
+        url: https://github.com/brailcom/speechd/releases/download/0.11.5/speech-dispatcher-0.11.5.tar.gz
+        sha512: d6d880bce0ae5bc2a5d519ef7740c689ae8b4b0bb658379762810e4beae3e465a429fbe19f7c490e89db0ea6a36aedd4b2287ac9251b90059b5c2cb3c0dd8a28
+        x-checker-data:
+          type: anitya
+          project-id: 13411
+          stable-only: true
+          url-template: https://github.com/brailcom/speechd/releases/download/$version/speech-dispatcher-$version.tar.gz
+
+    modules:
+      # dotconf provides utility functions to parse config files. It's only linked with the speech-dispatcher server,
+      # which we aren't building, but it needs to exist to get past the ./configure step anyway
+      - name: dotconf
+        sources:
+          - type: archive
+            url: https://github.com/williamh/dotconf/archive/refs/tags/v1.4.1.tar.gz
+            sha512: a6cada8621295b268d4b4fd85bc0c207e78324c9e84754ead2fdf6c1598ec8bdf626f9c24e66063d921c95d73e83b50ab50416a9b4c9a7a631392552ec46f55a
+            x-checker-data:
+              type: anitya
+              project-id: 13410
+              url-template: https://github.com/williamh/dotconf/archive/refs/tags/v$version.tar.gz
+
+          - type: script
+            commands:
+              - autoreconf -fiv
+            dest-filename: autogen.sh
+        cleanup:
+          - '*'
 
   - name: scons
     buildsystem: simple
@@ -62,8 +116,12 @@ modules:
 
     sources:
       - type: archive
-        sha256: 3d43b2303a924816ea0e1b345ff04c9b3e27b53eadf0f26012fc0c29b019685f
-        url: https://downloads.sourceforge.net/project/scons/scons/4.4.0/SCons-4.4.0.tar.gz
+        sha256: cad573b329b6a5bc7e654b01f0231064acc979026af68a9e467ddb32bf2ee501
+        url: https://downloads.sourceforge.net/project/scons/scons/4.8.1/SCons-4.8.1.tar.gz
+        x-checker-data:
+          type: anitya
+          project-id: 4770
+          url-template: https://downloads.sourceforge.net/project/scons/scons/$version/SCons-$version.tar.gz
 
     build-commands:
       - pip3 install --no-index --no-build-isolation --prefix=/app .
@@ -73,14 +131,14 @@ modules:
 
     sources:
       - type: archive
-        sha256: 2fc6d31d4d5768a0a6e2179b5d909b9d8fb558db9db2123bfcd6bed094a45b35
-        url: https://github.com/godotengine/godot-builds/releases/download/4.4-dev5/godot-4.4-dev5.tar.xz
+        sha256: 57b167ae8e6808ab9d589da26069e66abaad83e33b83de7004355c415493b902
+        url: https://github.com/godotengine/godot-builds/releases/download/4.4-dev6/godot-4.4-dev6.tar.xz
 
       - type: script
         dest-filename: godot.sh
         commands:
           - export APPDATA="$XDG_DATA_HOME"
-          - if [ -f "$JAVA_HOME/enable.sh" ]; then source "$JAVA_HOME/enable.sh"; fi
+          - if [ -f /app/jdk/enable.sh ]; then source /app/jdk/enable.sh; fi
           - /app/bin/godot-bin "$@"
 
       - type: file
