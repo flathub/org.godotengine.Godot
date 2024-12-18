@@ -52,8 +52,6 @@ finish-args:
   - --talk-name=org.freedesktop.Flatpak
 
 modules:
-  - shared-modules/glu/glu-9.json
-
   - name: jdk
     buildsystem: simple
     build-commands:
