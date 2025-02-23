@@ -55,6 +55,10 @@
     </screenshot>
   </screenshots>
   <content_rating type="oars-1.1"/>
+  <branding>
+    <color type="primary" scheme_preference="light">#a5d7ff</color>
+    <color type="primary" scheme_preference="dark">#2d3c67</color>
+  </branding>
   <releases>
     <release version="4.4.1" date="2025-03-26">
       <description></description>
