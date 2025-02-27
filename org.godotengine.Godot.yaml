@@ -129,8 +129,8 @@ modules:
 
     sources:
       - type: archive
-        sha256: 586daa3f9f069615baf312ed8df95f1e650c9029e79ad57d26598759c0833ba5
-        url: https://github.com/godotengine/godot-builds/releases/download/4.4-beta3/godot-4.4-beta3.tar.xz
+        sha256: 0ed7e286eeabeb913f1713649584753afe4262f547dbb8f07812fb36580cd268
+        url: https://github.com/godotengine/godot-builds/releases/download/4.4-rc2/godot-4.4-rc2.tar.xz
 
       - type: script
         dest-filename: godot.sh
