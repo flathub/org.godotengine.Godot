@@ -38,7 +38,6 @@ build-options:
       builtin_libvpx=no
       builtin_zlib=no
       builtin_graphite=no
-      builtin_harfbuzz=no
       udev=no
 finish-args:
   - --share=ipc
