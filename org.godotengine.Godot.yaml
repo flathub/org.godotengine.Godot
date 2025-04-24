@@ -113,7 +113,7 @@ modules:
 
     sources:
       - type: archive
-        sha256: bacac880ba2e86d6a156c116e2f8f2bfa82b257046f3ac2666c85c53c615c338
+        sha256: e2d78aa56e4646e5dbaf50c0758c6d1e4b0418464d8d6d07a09beb6cf257538f
         url: https://downloads.sourceforge.net/project/scons/scons/4.9.1/SCons-4.9.1.tar.gz
         x-checker-data:
           type: anitya
