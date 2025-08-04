@@ -39,6 +39,7 @@ build-options:
       builtin_zlib=no
       builtin_graphite=no
       builtin_harfbuzz=no
+      builtin_sdl=no
       udev=no
 finish-args:
   - --share=ipc
@@ -129,8 +130,8 @@ modules:
 
     sources:
       - type: archive
-        sha256: 915e0bb6375fec19cee9642093bbca2e2153fb364badc6fd45e6b16c5744c1ab
-        url: https://github.com/godotengine/godot-builds/releases/download/4.5-beta3/godot-4.5-beta3.tar.xz
+        sha256: b0e797216133dfb13edcf2a4264077bbcef2074f33b9809396fea10126584392
+        url: https://github.com/godotengine/godot-builds/releases/download/4.5-beta4/godot-4.5-beta4.tar.xz
 
       - type: script
         dest-filename: godot.sh
