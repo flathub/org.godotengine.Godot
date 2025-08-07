@@ -130,8 +130,8 @@ modules:
 
     sources:
       - type: archive
-        sha256: b0e797216133dfb13edcf2a4264077bbcef2074f33b9809396fea10126584392
-        url: https://github.com/godotengine/godot-builds/releases/download/4.5-beta4/godot-4.5-beta4.tar.xz
+        sha256: 0f57145ccd93c53942671c316d1afd077b22c7089bbe9deb3323a2973df59d70
+        url: https://github.com/godotengine/godot-builds/releases/download/4.5-beta5/godot-4.5-beta5.tar.xz
 
       - type: script
         dest-filename: godot.sh
