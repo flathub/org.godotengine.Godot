@@ -56,6 +56,9 @@
   </screenshots>
   <content_rating type="oars-1.1" />
   <releases>
+    <release version="4.5~beta7" date="2025-08-29" type="snapshot">
+      <url>https://godotengine.org/article/dev-snapshot-godot-4-5-beta-7/</url>
+    </release>
     <release version="4.5~beta5" date="2025-08-06" type="snapshot">
       <url>https://godotengine.org/article/dev-snapshot-godot-4-5-beta-5/</url>
     </release>
