@@ -1,6 +1,6 @@
 app-id: org.godotengine.Godot
 runtime: org.freedesktop.Sdk
-runtime-version: &runtime-version '24.08'
+runtime-version: &runtime-version '25.08'
 sdk: org.freedesktop.Sdk
 add-extensions:
   org.freedesktop.Sdk.Extension.openjdk17:
@@ -39,6 +39,7 @@ build-options:
       builtin_zlib=no
       builtin_graphite=no
       builtin_harfbuzz=no
+      builtin_sdl=no
       udev=no
 finish-args:
   - --share=ipc
@@ -80,8 +81,8 @@ modules:
 
     sources:
       - type: archive
-        url: https://github.com/brailcom/speechd/releases/download/0.11.5/speech-dispatcher-0.11.5.tar.gz
-        sha512: d6d880bce0ae5bc2a5d519ef7740c689ae8b4b0bb658379762810e4beae3e465a429fbe19f7c490e89db0ea6a36aedd4b2287ac9251b90059b5c2cb3c0dd8a28
+        url: https://github.com/brailcom/speechd/releases/download/0.12.1/speech-dispatcher-0.12.1.tar.gz
+        sha512: f386bb25d80e85153db4907c5adece519a86084676a39f958a4f56e53bb957cb9b1232c4e648e73ef8dc5d1ab8e0cd64a5e0d151775fdd8f3b175f47f4864422
         x-checker-data:
           type: anitya
           project-id: 13411
@@ -129,8 +130,8 @@ modules:
 
     sources:
       - type: archive
-        sha256: 915e0bb6375fec19cee9642093bbca2e2153fb364badc6fd45e6b16c5744c1ab
-        url: https://github.com/godotengine/godot-builds/releases/download/4.5-beta3/godot-4.5-beta3.tar.xz
+        sha256: 6fd7d6c2ee52f8243eb06b1645176bd9ea9ed9abff40ecff3f5fa01b6cbf75b4
+        url: https://github.com/godotengine/godot-builds/releases/download/4.5-beta7/godot-4.5-beta7.tar.xz
 
       - type: script
         dest-filename: godot.sh
