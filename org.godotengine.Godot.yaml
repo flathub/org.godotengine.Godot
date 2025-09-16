@@ -50,6 +50,7 @@ finish-args:
   - --filesystem=xdg-run/speech-dispatcher # For TTS via libspeechd
   - --device=all
   - --talk-name=org.freedesktop.Flatpak
+  - --talk-name=org.freedesktop.ScreenSaver
 
 modules:
   - name: jdk
