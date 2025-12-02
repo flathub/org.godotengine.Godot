@@ -38,7 +38,6 @@ build-options:
       builtin_libvpx=no
       builtin_zlib=no
       builtin_graphite=no
-      builtin_harfbuzz=no
       builtin_sdl=no
       udev=no
 finish-args:
@@ -51,6 +50,7 @@ finish-args:
   - --filesystem=xdg-run/speech-dispatcher # For TTS via libspeechd
   - --device=all
   - --talk-name=org.freedesktop.Flatpak
+  - --talk-name=org.freedesktop.ScreenSaver
 
 modules:
   - name: jdk
@@ -115,8 +115,8 @@ modules:
 
     sources:
       - type: archive
-        sha256: cad573b329b6a5bc7e654b01f0231064acc979026af68a9e467ddb32bf2ee501
-        url: https://downloads.sourceforge.net/project/scons/scons/4.8.1/SCons-4.8.1.tar.gz
+        sha256: 99c0e94a42a2c1182fa6859b0be697953db07ba936ecc9817ae0d218ced20b15
+        url: https://downloads.sourceforge.net/project/scons/scons/4.10.1/SCons-4.10.1.tar.gz
         x-checker-data:
           type: anitya
           project-id: 4770
