@@ -50,7 +50,6 @@ finish-args:
   - --filesystem=xdg-run/speech-dispatcher # For TTS via libspeechd
   - --device=all
   - --talk-name=org.freedesktop.Flatpak
-  - --talk-name=org.freedesktop.ScreenSaver
 
 modules:
   - name: jdk
@@ -130,8 +129,8 @@ modules:
 
     sources:
       - type: archive
-        sha256: 6fd7d6c2ee52f8243eb06b1645176bd9ea9ed9abff40ecff3f5fa01b6cbf75b4
-        url: https://github.com/godotengine/godot-builds/releases/download/4.5-beta7/godot-4.5-beta7.tar.xz
+        sha256: 95a293ad548a36a5a98f0ac1b69f3da00254f4836aa7d004d818ca10dd276e45
+        url: https://github.com/godotengine/godot-builds/releases/download/4.6-dev5/godot-4.6-dev5.tar.xz
 
       - type: script
         dest-filename: godot.sh
