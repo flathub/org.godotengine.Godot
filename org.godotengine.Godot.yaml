@@ -40,6 +40,7 @@ build-options:
       builtin_graphite=no
       builtin_sdl=no
       udev=no
+      accesskit_sdk_path=/app/accesskit-c
 finish-args:
   - --share=ipc
   - --socket=wayland
@@ -51,6 +52,7 @@ finish-args:
   - --device=all
   - --talk-name=org.freedesktop.Flatpak
   - --talk-name=org.freedesktop.ScreenSaver
+  - --talk-name=org.a11y.Bus # For screen reader accessibility via AT-SPI
 
 modules:
   - name: jdk
@@ -124,6 +126,19 @@ modules:
 
     build-commands:
       - pip3 install --no-index --no-build-isolation --prefix=/app .
+
+  # AccessKit C bindings for screen reader accessibility
+  - name: accesskit-c
+    buildsystem: simple
+    sources:
+      - type: archive
+        url: https://github.com/godotengine/godot-accesskit-c-static/releases/download/0.17.0/accesskit-c-0.17.0.zip
+        sha256: 053ce758ae9a84c4870ebc64894ab8798773fcca221840f262001e0eaa305b18
+    build-commands:
+      - mkdir -p /app/accesskit-c
+      - cp -r include lib /app/accesskit-c/
+    cleanup:
+      - '*'
 
   - name: godot-tools
     buildsystem: simple
