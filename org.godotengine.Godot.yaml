@@ -132,8 +132,8 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://github.com/godotengine/godot-accesskit-c-static/releases/download/0.17.0/accesskit-c-0.17.0.zip
-        sha256: 053ce758ae9a84c4870ebc64894ab8798773fcca221840f262001e0eaa305b18
+        url: https://github.com/godotengine/godot-accesskit-c-static/releases/download/0.18.0/accesskit-c-0.18.0.zip
+        sha256: 967c457e13c6adbe43f875b3c3bd9984e9e0e8e9708a1e82f396ea0364b5e593
     build-commands:
       - mkdir -p /app/accesskit-c
       - cp -r include lib /app/accesskit-c/
@@ -145,8 +145,8 @@ modules:
 
     sources:
       - type: archive
-        sha256: 559e11bdd85033640d49db67baa6f15be1128b2af38a5acc06e02b53363d8dde
-        url: https://github.com/godotengine/godot/releases/download/4.5.1-stable/godot-4.5.1-stable.tar.xz
+        sha256: 900ad0f6241b8051daa569cee1b07b6e30c4cb4f804471f72256d052334c0550
+        url: https://github.com/godotengine/godot/releases/download/4.6-stable/godot-4.6-stable.tar.xz
         x-checker-data:
           type: anitya
           project-id: 373975
