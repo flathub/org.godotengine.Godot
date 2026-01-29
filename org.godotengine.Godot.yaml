@@ -51,7 +51,6 @@ finish-args:
   - --filesystem=xdg-run/speech-dispatcher # For TTS via libspeechd
   - --device=all
   - --talk-name=org.freedesktop.Flatpak
-  - --talk-name=org.freedesktop.ScreenSaver
   - --talk-name=org.a11y.Bus # For screen reader accessibility via AT-SPI
 
 modules:
