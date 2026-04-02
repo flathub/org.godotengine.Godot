@@ -44,7 +44,7 @@ build-options:
 finish-args:
   - --share=ipc
   - --socket=wayland
-  - --socket=x11
+  - --socket=fallback-x11
   - --share=network
   - --socket=pulseaudio
   - --filesystem=host
