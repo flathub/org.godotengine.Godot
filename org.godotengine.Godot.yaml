@@ -131,8 +131,8 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://github.com/godotengine/godot-accesskit-c-static/releases/download/0.18.0/accesskit-c-0.18.0.zip
-        sha256: 967c457e13c6adbe43f875b3c3bd9984e9e0e8e9708a1e82f396ea0364b5e593
+        url: https://github.com/godotengine/godot-accesskit-c-static/releases/download/0.21.2/accesskit-c-0.21.2.zip
+        sha256: 02a08691b78fc6f8f88f6546e997b9f90b4ecbedf5ca5c621dbab144a4b18964
     build-commands:
       - mkdir -p /app/accesskit-c
       - cp -r include lib /app/accesskit-c/
