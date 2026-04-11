@@ -44,7 +44,7 @@ build-options:
 finish-args:
   - --share=ipc
   - --socket=wayland
-  - --socket=x11
+  - --socket=fallback-x11
   - --share=network
   - --socket=pulseaudio
   - --filesystem=host
@@ -131,8 +131,8 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://github.com/godotengine/godot-accesskit-c-static/releases/download/0.18.0/accesskit-c-0.18.0.zip
-        sha256: 967c457e13c6adbe43f875b3c3bd9984e9e0e8e9708a1e82f396ea0364b5e593
+        url: https://github.com/godotengine/godot-accesskit-c-static/releases/download/0.21.2/accesskit-c-0.21.2.zip
+        sha256: 02a08691b78fc6f8f88f6546e997b9f90b4ecbedf5ca5c621dbab144a4b18964
     build-commands:
       - mkdir -p /app/accesskit-c
       - cp -r include lib /app/accesskit-c/
@@ -144,8 +144,8 @@ modules:
 
     sources:
       - type: archive
-        sha256: 92ad1898ba8086640eb66ae9949ee8694de5c691d373febcd0d7f1f5cd098f62
-        url: https://github.com/godotengine/godot/releases/download/4.6.1-stable/godot-4.6.1-stable.tar.xz
+        sha256: 3465f34ae41cb7d7c17b0516c7cce93cc8a7a4d62331456b7b18e4e1d1b064c2
+        url: https://github.com/godotengine/godot/releases/download/4.6.2-stable/godot-4.6.2-stable.tar.xz
         x-checker-data:
           type: anitya
           project-id: 373975
