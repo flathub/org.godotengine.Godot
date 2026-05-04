@@ -43,8 +43,7 @@ build-options:
       accesskit_sdk_path=/app/accesskit-c
 finish-args:
   - --share=ipc
-  - --socket=wayland
-  - --socket=fallback-x11
+  - --socket=x11
   - --share=network
   - --socket=pulseaudio
   - --filesystem=host
