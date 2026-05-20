@@ -143,8 +143,8 @@ modules:
 
     sources:
       - type: archive
-        sha256: 3465f34ae41cb7d7c17b0516c7cce93cc8a7a4d62331456b7b18e4e1d1b064c2
-        url: https://github.com/godotengine/godot/releases/download/4.6.2-stable/godot-4.6.2-stable.tar.xz
+        sha256: 2261028c0dfc10e0cf4800a5b2e5a57ea241f72965162327f5764d536a69a46a
+        url: https://github.com/godotengine/godot/releases/download/4.6.3-stable/godot-4.6.3-stable.tar.xz
         x-checker-data:
           type: anitya
           project-id: 373975
