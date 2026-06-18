@@ -143,8 +143,8 @@ modules:
 
     sources:
       - type: archive
-        sha256: 2261028c0dfc10e0cf4800a5b2e5a57ea241f72965162327f5764d536a69a46a
-        url: https://github.com/godotengine/godot/releases/download/4.6.3-stable/godot-4.6.3-stable.tar.xz
+        sha256: e7acb6b27d6bee2525fdaa12660c602b034c25094e8a2679334601d8878a9e06
+        url: https://github.com/godotengine/godot/releases/download/4.7-stable/godot-4.7-stable.tar.xz
         x-checker-data:
           type: anitya
           project-id: 373975
@@ -168,9 +168,9 @@ modules:
       - install -Dm644 misc/dist/linux/$FLATPAK_ID.desktop /app/share/applications/$FLATPAK_ID.desktop
       - install -Dm644 misc/dist/linux/$FLATPAK_ID.xml /app/share/mime/packages/$FLATPAK_ID.xml
       - install -Dm644 $FLATPAK_ID.appdata.xml /app/share/appdata/$FLATPAK_ID.appdata.xml
-      - install -Dm644 icon.svg /app/share/icons/hicolor/scalable/apps/$FLATPAK_ID.svg
+      - install -Dm644 misc/logo/icon.svg /app/share/icons/hicolor/scalable/apps/$FLATPAK_ID.svg
       - >
         for size in {32,64,128,256}; do
-          rsvg-convert icon.svg -w "$size" -h "$size" -a -f png -o "$size.png";
+          rsvg-convert misc/logo/icon.svg -w "$size" -h "$size" -a -f png -o "$size.png";
           install -Dm644 "$size.png" "/app/share/icons/hicolor/${size}x${size}/apps/$FLATPAK_ID.png";
         done
