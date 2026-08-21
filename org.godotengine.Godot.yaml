@@ -143,8 +143,8 @@ modules:
 
     sources:
       - type: archive
-        sha256: 0230d490846467c4fd772cc70b08dc56cb3adfedd55d039de0af74ddfdba00eb
-        url: https://github.com/godotengine/godot/releases/download/4.7.1-stable/godot-4.7.1-stable.tar.xz
+        sha256: a18ce0ccec3ecc40b0dd6c4f5132ca934e9fb7c2979717940ff32aee1eb35481
+        url: https://github.com/godotengine/godot/releases/download/4.7.2-stable/godot-4.7.2-stable.tar.xz
         x-checker-data:
           type: anitya
           project-id: 373975
